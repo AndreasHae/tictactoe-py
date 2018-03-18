@@ -1,5 +1,5 @@
 import unittest
-from field import Field
+from model.field import Field
 
 class FieldTest(unittest.TestCase):
 

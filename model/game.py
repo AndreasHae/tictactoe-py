@@ -1,4 +1,4 @@
-from field import Field
+from model.field import Field
 
 def player_generator():
     while True:

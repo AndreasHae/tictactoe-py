@@ -7,7 +7,7 @@ wonderful [PyGObject](https://pygobject.readthedocs.io/en/latest/)
 API bindings. It is meant to serve as an example for other developers
 willing to learn Gtk and PyGObject.
 
-The project leverages the Model-View-Controller pattern. In the `model`-
+The project leverages the Model-View-Controller pattern. In the `model`
 directory, you can find all model-related classes and their accompanying
 unit-tests. The `main.py` contains all logic related to the UI, which is
 split between the `View` and the `Controller`.

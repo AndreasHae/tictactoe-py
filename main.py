@@ -18,7 +18,7 @@ class TicTacToeWindow(Gtk.Window):
 
     def on_button_clicked(self, widget):
         self.game.turn(0, 0)
-        widget.set_label(self.game.next_player)
+        widget.set_label(self.game.__next_player)
 
 
 

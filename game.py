@@ -5,12 +5,11 @@ def player_generator():
         yield 'X'
         yield 'O'
 
-player = player_generator()
-
 class TicTacToe:
 
     def __init__(self):
         self.__player_gen = player_generator()
+        self.__next_player = next(self.__player_gen)
         self.__field = Field()
 
     def turn(self, row, col):
@@ -18,7 +17,13 @@ class TicTacToe:
         assert col < 3 and col >= 0
         assert self.__field.get(row, col) == None
 
-        self.__field.place(row, col, next(self.__player_gen))
+        self.__field.place(row, col, self.__next_player)
+        self.__next_player = next(self.__player_gen)
 
-    def get_winner(self):
+    @property
+    def winner(self):
         return self.__field.get_winner()
+
+    @property
+    def next_player(self):
+        return self.__next_player

@@ -7,7 +7,7 @@ from model.game import Game
 class View(Gtk.Window):
 
     __gsignals__ = {
-        'button-clicked': (GObject.SIGNAL_RUN_FIRST, None, (int, int,))
+        'button-clicked': (GObject.SIGNAL_RUN_FIRST, None, (Gtk.Button, int, int,))
     }
 
     def __init__(self):
@@ -28,7 +28,7 @@ class View(Gtk.Window):
         row = self.grid.child_get_property(btn, 'top-attach')
         col = self.grid.child_get_property(btn, 'left-attach')
 
-        self.emit('button-clicked', row, col)
+        self.emit('button-clicked', btn, row, col)
 
 class Controller:
 
@@ -41,8 +41,16 @@ class Controller:
 
         self.__view.show_all()
 
-    def on_btn_clicked(self, view, row, col):
-        print("{}, {}".format(row, col))
+    def on_btn_clicked(self, view, btn, row, col):
+        if self.__game.winner is None:
+            player = self.__game.next_player
+
+            try:
+                self.__game.turn(row, col)
+            except:
+                return
+
+            btn.set_label(player)
 
 if __name__ == "__main__":
     Controller(Game(), View())

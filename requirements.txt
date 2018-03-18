@@ -1,2 +1,2 @@
 tictactoe-py
-pygobject==3.26.1
+pygobject>=3.28.1

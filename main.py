@@ -41,6 +41,9 @@ class View(Gtk.Window):
     def set_info(self, info):
         self.info_label.set_label(info)
 
+    def set_field_sensitive(self, sensitive):
+        self.field_grid.set_sensitive(sensitive)
+
     def on_btn_clicked(self, btn):
         row = self.field_grid.child_get_property(btn, 'top-attach')
         col = self.field_grid.child_get_property(btn, 'left-attach')
@@ -75,6 +78,7 @@ class Controller:
 
             if self.__game.winner is not None:
                 self.__view.set_info("{} has won. Congratulations!".format(self.__game.winner))
+                self.__view.set_field_sensitive(False)
             else:
                 self.__view.set_info("Next player: {}".format(self.__game.next_player))
         else:

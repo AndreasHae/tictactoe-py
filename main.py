@@ -44,6 +44,11 @@ class View(Gtk.Window):
     def set_field_sensitive(self, sensitive):
         self.field_grid.set_sensitive(sensitive)
 
+    def reset_field(self):
+        self.set_field_sensitive(True)
+        for btn in self.field_grid.get_children():
+            btn.set_label("")
+
     def on_btn_clicked(self, btn):
         row = self.field_grid.child_get_property(btn, 'top-attach')
         col = self.field_grid.child_get_property(btn, 'left-attach')
@@ -53,8 +58,8 @@ class View(Gtk.Window):
 
 class Controller:
 
-    def __init__(self, game, view):
-        self.__game = game
+    def __init__(self, view):
+        self.__game = Game()
         self.__view = view
 
         self.__view.set_info("Next player: {}".format(self.__game.next_player))
@@ -85,9 +90,11 @@ class Controller:
             self.__view.set_info("{} has won. Congratulations!".format(self.__game.winner))
 
     def on_new_game(self, view):
-        # TODO
+        self.__game = Game()
+        self.__view.reset_field()
+        self.__view.set_info("Next player: {}".format(self.__game.next_player))
         pass
 
 if __name__ == "__main__":
-    Controller(Game(), View())
+    Controller(View())
     Gtk.main()

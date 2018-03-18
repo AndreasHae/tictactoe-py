@@ -6,8 +6,6 @@ class Field:
         return self.field[row][col]
 
     def place(self, row, col, player):
-        assert self.field[row][col] is not None, "Cell is not empty"
-
         self.field[row][col] = player
 
     def get_winner(self):

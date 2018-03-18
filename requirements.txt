@@ -1,0 +1,2 @@
+tictactoe-py
+pygobject==3.26.1

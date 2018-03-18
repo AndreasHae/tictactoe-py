@@ -5,7 +5,7 @@ def player_generator():
         yield 'X'
         yield 'O'
 
-class TicTacToe:
+class Game:
 
     def __init__(self):
         self.__player_gen = player_generator()

@@ -2,7 +2,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-from game import TicTacToe
+from game import Game
 from components import Field
 
 class TicTacToeWindow(Gtk.Window):
@@ -10,7 +10,7 @@ class TicTacToeWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Tic-Tac-Toe")
 
-        self.game = TicTacToe()
+        self.game = Game()
 
         self.button = Gtk.Button(label=self.game.next_player)
         self.button.connect("clicked", self.on_button_clicked)
